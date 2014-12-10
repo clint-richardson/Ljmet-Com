@@ -66,7 +66,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new ChargedHiggsCalc(), "ChargedHiggsCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new ChargedHiggsCalc(), "ChargedHiggsCalc");
 
 
 

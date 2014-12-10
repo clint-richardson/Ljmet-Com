@@ -52,7 +52,7 @@ class PdfCalc : public BaseCalc{
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new PdfCalc(), "PdfCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new PdfCalc(), "PdfCalc");
 
 
 

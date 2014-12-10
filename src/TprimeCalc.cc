@@ -69,7 +69,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new TprimeCalc(), "TprimeCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new TprimeCalc(), "TprimeCalc");
 
 
 

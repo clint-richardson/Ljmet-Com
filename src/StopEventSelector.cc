@@ -126,7 +126,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new StopEventSelector(),"StopSelector");
+//static int reg = LjmetFactory::GetInstance()->Register(new StopEventSelector(),"StopSelector");
 
 
 

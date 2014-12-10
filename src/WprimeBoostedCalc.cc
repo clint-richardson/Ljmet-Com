@@ -81,7 +81,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new WprimeBoostedCalc(), "WprimeBoostedCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new WprimeBoostedCalc(), "WprimeBoostedCalc");
 
 
 

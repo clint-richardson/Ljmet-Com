@@ -129,7 +129,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new ChargedHiggsEventSelector(), "ChargedHiggsSelector");
+//static int reg = LjmetFactory::GetInstance()->Register(new ChargedHiggsEventSelector(), "ChargedHiggsSelector");
 
 
 ChargedHiggsEventSelector::ChargedHiggsEventSelector(){

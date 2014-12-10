@@ -129,7 +129,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new TprimeEventSelector(), "TprimeSelector");
+//static int reg = LjmetFactory::GetInstance()->Register(new TprimeEventSelector(), "TprimeSelector");
 
 
 TprimeEventSelector::TprimeEventSelector(){

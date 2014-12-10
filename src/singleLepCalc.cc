@@ -38,7 +38,7 @@ private:
     bool isTT_;
 };
 
-static int reg = LjmetFactory::GetInstance()->Register(new singleLepCalc(), "singleLepCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new singleLepCalc(), "singleLepCalc");
 
 singleLepCalc::singleLepCalc()
 {
