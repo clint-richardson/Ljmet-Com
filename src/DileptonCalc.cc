@@ -68,7 +68,7 @@ int DileptonCalc::BeginJob(){
     else                              rhoSrc_it = edm::InputTag("fixedGridRhoAll", "", "RECO");
     
     if (mPset.exists("pvCollection")) pvCollection_it = mPset.getParameter<edm::InputTag>("pvCollection");
-    else                              pvCollection_it = edm::InputTag("goodOfflinePrimaryVertices");
+    else                              pvCollection_it = edm::InputTag("offlineSlimmedPrimaryVertices");
     
     if (mPset.exists("isMc"))         isMc = mPset.getParameter<bool>("isMc");
     else                              isMc = false;
