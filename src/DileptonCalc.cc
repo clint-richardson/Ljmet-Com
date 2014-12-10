@@ -582,7 +582,7 @@ int DileptonCalc::AnalyzeEvent(edm::EventBase const & event,
     //
     
     //Get Top-like jets
-    edm::InputTag topJetColl = edm::InputTag("goodPatJetsCATopTagPF");
+    edm::InputTag topJetColl = edm::InputTag("slimmedJetsAK8");
     edm::Handle<std::vector<pat::Jet> > topJets;
     event.getByLabel(topJetColl, topJets);
     
