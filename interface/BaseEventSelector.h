@@ -45,9 +45,9 @@ public:
     BaseEventSelector();
     virtual ~BaseEventSelector() { };
     virtual void BeginJob(std::map<std::string, edm::ParameterSet const > par);
-    virtual bool operator()( edm::EventBase const & event, pat::strbitset & ret) = 0;
+    virtual bool operator()( edm::Event const & event, pat::strbitset & ret) = 0;
     virtual void EndJob() { }
-    virtual void AnalyzeEvent( edm::EventBase const & event, LjmetEventContent & ec ) { }
+    virtual void AnalyzeEvent( edm::Event const & event, LjmetEventContent & ec ) { }
     std::string GetName() { return mName; }
     /// Evaluates a signed perp components of v1 relative to v2. The sign is defined by Phi
     double GetPerp(TVector3 & v1, TVector3 & v2);
@@ -84,9 +84,9 @@ public:
     void SetCorrectedMet(TLorentzVector & met) { correctedMET_p4 = met; }
     void SetCorrJetsWithBTags(std::vector<std::pair<TLorentzVector, bool>> & jets) { mvCorrJetsWithBTags = jets; }
     
-    bool isJetTagged(const pat::Jet &jet, edm::EventBase const & event, bool applySF = true);
-    TLorentzVector correctJet(const pat::Jet & jet, edm::EventBase const & event);
-    TLorentzVector correctMet(const pat::MET & met, edm::EventBase const & event);
+    bool isJetTagged(const pat::Jet &jet, edm::Event const & event, bool applySF = true);
+    TLorentzVector correctJet(const pat::Jet & jet, edm::Event const & event);
+    TLorentzVector correctMet(const pat::MET & met, edm::Event const & event);
     
 protected:
     std::vector<edm::Ptr<pat::Jet>> mvAllJets;
@@ -132,9 +132,9 @@ private:
     void init() { mLegend = "[" + mName + "]: "; std::cout << mLegend << "registering " << mName << std::endl; }
     void setName(std::string name) { mName = name; }
     /// Do what any event selector must do before event gets checked
-    void BeginEvent(edm::EventBase const & event, LjmetEventContent & ec) { mNCorrJets = 0; mNBtagSfCorrJets = 0; }
+    void BeginEvent(edm::Event const & event, LjmetEventContent & ec) { mNCorrJets = 0; mNBtagSfCorrJets = 0; }
     /// Do what any event selector must do after event processing is done, but before event content gets saved to file
-    void EndEvent(edm::EventBase const & event, LjmetEventContent & ec) { SetHistValue("nBtagSfCorrections", mNBtagSfCorrJets); }
+    void EndEvent(edm::Event const & event, LjmetEventContent & ec) { SetHistValue("nBtagSfCorrections", mNBtagSfCorrJets); }
 };
 
 #endif

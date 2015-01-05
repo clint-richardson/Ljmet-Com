@@ -12,12 +12,13 @@
 
 #include "FWCore/ParameterSet/interface/ProcessDesc.h"
 #include "FWCore/PythonParameterSet/interface/PythonProcessDesc.h"
+#include "FWCore/Framework/interface/EDConsumerBase.h"
 
 class BaseEventSelector;
 class LjmetEventContent;
 
 namespace edm {
-    class EventBase;
+    class Event;
 }
 
 class BaseCalc {
@@ -33,8 +34,8 @@ public:
     BaseCalc(const BaseCalc &); // stop default
     std::string GetName() { return mName; }
     virtual int BeginJob() = 0;
-    virtual int ProduceEvent(edm::EventBase const & event, BaseEventSelector * selector) { return 0; }
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector) { return 0; }
+    virtual int ProduceEvent(edm::Event const & event, BaseEventSelector * selector) { return 0; }
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector) { return 0; }
     virtual int EndJob() { return 0; }
     
     std::string mName;
