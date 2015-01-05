@@ -119,6 +119,9 @@ if not process.ljmet.isMc:
 #
 # Output
 #
+
+process.TFileService = cms.Service("TFileService",fileName=cms.string("ljmet_tree"))
+
 process.outputs = cms.PSet (
     outputName = cms.string('ljmet_tree'),
     treeName   = cms.string('ljmet'),
