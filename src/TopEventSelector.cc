@@ -75,7 +75,7 @@ public:
     virtual void BeginJob(std::map<std::string, edm::ParameterSet const > par);
     
     // main method where the cuts are applied
-    bool operator()( edm::EventBase const & event, pat::strbitset & ret);
+    bool operator()( edm::Event const & event, pat::strbitset & ret);
     
     // executes after loop over events
     virtual void EndJob(){}
@@ -625,7 +625,7 @@ void TopEventSelector::initialize( Version_t version){
 
 
 
-bool TopEventSelector::operator()( edm::EventBase const & event, pat::strbitset & ret){
+bool TopEventSelector::operator()( edm::Event const & event, pat::strbitset & ret){
     
     pat::strbitset retMuon      = muonSel_->getBitTemplate();
     pat::strbitset retLooseMuon = looseMuonSel_->getBitTemplate();

@@ -72,7 +72,7 @@ void LjmetPdfWeightProducer::beginJob() {
 
 /////////////////////////////////////////////////////////////////////////////////////
 std::map<std::string,std::vector<double> >
-LjmetPdfWeightProducer::produce(edm::EventBase const & event) {
+LjmetPdfWeightProducer::produce(edm::Event const & event) {
 
   // FWLite
   std::map<std::string,std::vector<double> > result;

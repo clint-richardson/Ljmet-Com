@@ -30,7 +30,7 @@ public:
     virtual ~LjetsTopoCalc(){}
     
     virtual int BeginJob(){return 0;}
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob(){return 0;}
     
     
@@ -54,7 +54,7 @@ LjetsTopoCalc::LjetsTopoCalc(){
 
 
 
-int LjetsTopoCalc::AnalyzeEvent(edm::EventBase const & event,
+int LjetsTopoCalc::AnalyzeEvent(edm::Event const & event,
                                 BaseEventSelector * selector){
     //
     // compute event variables here

@@ -22,7 +22,7 @@ public:
     CATopoCalc();
     virtual ~CATopoCalc();
     virtual int BeginJob();
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob();
     
 private:
@@ -59,7 +59,7 @@ int CATopoCalc::BeginJob()
     return 0;
 }
 
-int CATopoCalc::AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector)
+int CATopoCalc::AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector)
 {
     //
     // compute event variables here

@@ -26,8 +26,8 @@ public:
   virtual ~CommonCalc(){}
 
   virtual int BeginJob();
-  virtual int ProduceEvent(edm::EventBase const & event, BaseEventSelector * selector);
-  virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+  virtual int ProduceEvent(edm::Event const & event, BaseEventSelector * selector);
+  virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
   virtual int EndJob(){return 0;}
 
   
@@ -67,7 +67,7 @@ int CommonCalc::BeginJob(){
 
 
 
-int CommonCalc::ProduceEvent(edm::EventBase const & event,
+int CommonCalc::ProduceEvent(edm::Event const & event,
 			     BaseEventSelector * selector){
   //
   // produce and store some new data for other modules
@@ -81,7 +81,7 @@ int CommonCalc::ProduceEvent(edm::EventBase const & event,
 
 
 
-int CommonCalc::AnalyzeEvent(edm::EventBase const & event,
+int CommonCalc::AnalyzeEvent(edm::Event const & event,
 			     BaseEventSelector * selector){
   //
   // compute event variables here

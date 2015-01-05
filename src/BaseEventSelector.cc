@@ -117,7 +117,7 @@ void BaseEventSelector::Init( void )
     mpEc->SetHistogram(mName, "nBtagSfCorrections", 100, 0.0, 10.0);
 }
 
-TLorentzVector BaseEventSelector::correctJet(const pat::Jet & jet, edm::EventBase const & event)
+TLorentzVector BaseEventSelector::correctJet(const pat::Jet & jet, edm::Event const & event)
 {
     // JES and JES systematics
     pat::Jet correctedJet = jet; //copy original jet
@@ -220,7 +220,7 @@ TLorentzVector BaseEventSelector::correctJet(const pat::Jet & jet, edm::EventBas
     return jetP4;
 }
 
-bool BaseEventSelector::isJetTagged(const pat::Jet & jet, edm::EventBase const & event, bool applySF)
+bool BaseEventSelector::isJetTagged(const pat::Jet & jet, edm::Event const & event, bool applySF)
 {
     bool _isTagged = false;
     
@@ -254,7 +254,7 @@ bool BaseEventSelector::isJetTagged(const pat::Jet & jet, edm::EventBase const &
     return _isTagged;
 }
 
-TLorentzVector BaseEventSelector::correctMet(const pat::MET & met, edm::EventBase const & event)
+TLorentzVector BaseEventSelector::correctMet(const pat::MET & met, edm::Event const & event)
 {
     double correctedMET_px = met.px();
     double correctedMET_py = met.py();

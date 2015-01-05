@@ -10,7 +10,7 @@
 #include "LJMet/Com/interface/BaseCalc.h"
 #include "LJMet/Com/interface/LjmetFactory.h"
 #include "LJMet/Com/interface/LjmetEventContent.h"
-
+#include "FWCore/Utilities/interface/EDGetToken.h"
 #include "EgammaAnalysis/ElectronTools/interface/ElectronEffectiveArea.h"
 #include "LJMet/Com/interface/TopElectronSelector.h"
 

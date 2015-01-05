@@ -50,7 +50,7 @@ public:
         return 0;
     }
     
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob(){return 0;}
     
     
@@ -66,14 +66,14 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new ChargedHiggsCalc(), "ChargedHiggsCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new ChargedHiggsCalc(), "ChargedHiggsCalc");
 
 
 
 ChargedHiggsCalc::ChargedHiggsCalc(){
 }
 
-int ChargedHiggsCalc::AnalyzeEvent(edm::EventBase const & event,
+int ChargedHiggsCalc::AnalyzeEvent(edm::Event const & event,
                                    BaseEventSelector * selector){
     //
     // compute event variables here

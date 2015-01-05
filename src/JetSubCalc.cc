@@ -25,7 +25,7 @@ public:
     JetSubCalc();
     virtual ~JetSubCalc();
     virtual int BeginJob();
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob();
     
 private:
@@ -62,7 +62,7 @@ int JetSubCalc::BeginJob()
     return 0;
 }
 
-int JetSubCalc::AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector)
+int JetSubCalc::AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector)
 {
     float subjetCSV;
     int CSVL, CSVM, CSVT;

@@ -432,8 +432,8 @@ public:
         
         return 0;
     }
-    virtual int ProduceEvent(edm::EventBase const & event, BaseEventSelector * selector);
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int ProduceEvent(edm::Event const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob(){return 0;}
     
     
@@ -453,7 +453,7 @@ static int reg = LjmetFactory::GetInstance()->Register(new PileUpCalc(), "PileUp
 
 
 
-int PileUpCalc::ProduceEvent(edm::EventBase const & event,
+int PileUpCalc::ProduceEvent(edm::Event const & event,
                              BaseEventSelector * selector){
     //
     // produce and store some new data for other modules
@@ -467,7 +467,7 @@ int PileUpCalc::ProduceEvent(edm::EventBase const & event,
 
 
 
-int PileUpCalc::AnalyzeEvent(edm::EventBase const & event,
+int PileUpCalc::AnalyzeEvent(edm::Event const & event,
                              BaseEventSelector * selector){
     
     //

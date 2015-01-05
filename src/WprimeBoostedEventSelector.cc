@@ -67,13 +67,13 @@ public:
     virtual void BeginJob(std::map<std::string, edm::ParameterSet const > par);
     
     // main method where the cuts are applied
-    virtual bool operator()( edm::EventBase const & event, pat::strbitset & ret);
+    virtual bool operator()( edm::Event const & event, pat::strbitset & ret);
     
     // executes after loop over events
     virtual void EndJob(){}
     
     
-    virtual void AnalyzeEvent( edm::EventBase const & event, LjmetEventContent & ec );
+    virtual void AnalyzeEvent( edm::Event const & event, LjmetEventContent & ec );
     
     
     boost::shared_ptr<PFJetIDSelectionFunctor> const & jetSel()        const { return jetSel_;}
@@ -130,7 +130,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new WprimeBoostedEventSelector(), "WprimeBoostedSelector");
+//static int reg = LjmetFactory::GetInstance()->Register(new WprimeBoostedEventSelector(), "WprimeBoostedSelector");
 
 
 WprimeBoostedEventSelector::WprimeBoostedEventSelector(){
@@ -400,7 +400,7 @@ void WprimeBoostedEventSelector::BeginJob( std::map<std::string, edm::ParameterS
 
 
 
-bool WprimeBoostedEventSelector::operator()( edm::EventBase const & event, pat::strbitset & ret){
+bool WprimeBoostedEventSelector::operator()( edm::Event const & event, pat::strbitset & ret){
     
     pat::strbitset retMuon           = muonSel_->getBitTemplate();
     pat::strbitset retLooseMuon      = looseMuonSel_->getBitTemplate();
@@ -951,7 +951,7 @@ bool WprimeBoostedEventSelector::operator()( edm::EventBase const & event, pat::
 
 
 
-void WprimeBoostedEventSelector::AnalyzeEvent( edm::EventBase const & event,
+void WprimeBoostedEventSelector::AnalyzeEvent( edm::Event const & event,
                                               LjmetEventContent & ec ){
     //
     // Compute analysis-specific quantities in the event,

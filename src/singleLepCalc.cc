@@ -25,7 +25,7 @@ public:
     singleLepCalc();
     virtual ~singleLepCalc();
     virtual int BeginJob();
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob();
     
 private:
@@ -38,7 +38,7 @@ private:
     bool isTT_;
 };
 
-static int reg = LjmetFactory::GetInstance()->Register(new singleLepCalc(), "singleLepCalc");
+//static int reg = LjmetFactory::GetInstance()->Register(new singleLepCalc(), "singleLepCalc");
 
 singleLepCalc::singleLepCalc()
 {
@@ -71,7 +71,7 @@ int singleLepCalc::BeginJob()
     return 0;
 }
 
-int singleLepCalc::AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector)
+int singleLepCalc::AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector)
 {
     // ----- Get objects from the selector -----
     std::vector<edm::Ptr<pat::Jet> >            const & vSelJets = selector->GetSelectedJets();

@@ -67,9 +67,9 @@ public:
     virtual void BeginJob(std::map<std::string, edm::ParameterSet const > par);
 
     // main method where the cuts are applied
-    virtual bool operator()( edm::EventBase const & event, pat::strbitset & ret);
+    virtual bool operator()( edm::Event const & event, pat::strbitset & ret);
 
-    virtual void AnalyzeEvent( edm::EventBase const & event, LjmetEventContent & ec );
+    virtual void AnalyzeEvent( edm::Event const & event, LjmetEventContent & ec );
     
     // executes after loop over events
     virtual void EndJob();
@@ -128,7 +128,7 @@ private:
 
 
 
-static int reg = LjmetFactory::GetInstance()->Register(new singleLepEventSelector(), "singleLepSelector");
+//static int reg = LjmetFactory::GetInstance()->Register(new singleLepEventSelector(), "singleLepSelector");
 
 singleLepEventSelector::singleLepEventSelector()
 {
@@ -399,7 +399,7 @@ void singleLepEventSelector::BeginJob( std::map<std::string, edm::ParameterSet c
     
 } // end of BeginJob() 
 
-bool singleLepEventSelector::operator()( edm::EventBase const & event, pat::strbitset & ret)
+bool singleLepEventSelector::operator()( edm::Event const & event, pat::strbitset & ret)
 {
     pat::strbitset retMuon           = muonSel_->getBitTemplate();
     pat::strbitset retLooseMuon      = looseMuonSel_->getBitTemplate();
@@ -1017,7 +1017,7 @@ bool singleLepEventSelector::operator()( edm::EventBase const & event, pat::strb
 }// end of operator()
 
 
-void singleLepEventSelector::AnalyzeEvent( edm::EventBase const & event, LjmetEventContent & ec )
+void singleLepEventSelector::AnalyzeEvent( edm::Event const & event, LjmetEventContent & ec )
 {
     //
     // Compute analysis-specific quantities in the event,

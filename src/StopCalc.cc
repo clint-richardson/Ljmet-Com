@@ -32,7 +32,7 @@ public:
     virtual ~StopCalc();
     
     virtual int BeginJob();
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob();
     
     
@@ -174,7 +174,7 @@ int StopCalc::EndJob(){
 
 
 
-int StopCalc::AnalyzeEvent(edm::EventBase const & event,
+int StopCalc::AnalyzeEvent(edm::Event const & event,
                            BaseEventSelector * selector){
     //
     // compute event variables here

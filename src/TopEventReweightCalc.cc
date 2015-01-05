@@ -68,7 +68,7 @@ public:
   virtual ~TopEventReweightCalc(){}
   
   virtual int BeginJob();
-  virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+  virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
   virtual int EndJob(){return 0;}
 
 private:
@@ -188,7 +188,7 @@ int TopEventReweightCalc::BeginJob(){
   return 0;
 }
 
-int TopEventReweightCalc::AnalyzeEvent(edm::EventBase const & event,
+int TopEventReweightCalc::AnalyzeEvent(edm::Event const & event,
 			       BaseEventSelector * selector){
 
   //

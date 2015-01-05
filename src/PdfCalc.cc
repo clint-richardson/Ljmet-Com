@@ -36,7 +36,7 @@ class PdfCalc : public BaseCalc{
   virtual ~PdfCalc();
 
   virtual int BeginJob();
-  virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+  virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
   virtual int EndJob();
 
   
@@ -94,7 +94,7 @@ int PdfCalc::EndJob(){
 }
 
 
-int PdfCalc::AnalyzeEvent(edm::EventBase const & event,
+int PdfCalc::AnalyzeEvent(edm::Event const & event,
 			     BaseEventSelector * selector){
   //
   // compute event variables here

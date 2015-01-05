@@ -135,7 +135,7 @@ BaseEventSelector * LjmetFactory::GetEventSelector(std::string name){
 
 
 
-void LjmetFactory::RunAllProducers(edm::EventBase const & event,
+void LjmetFactory::RunAllProducers(edm::Event const & event,
 				   BaseEventSelector * selector){
   //
   // Loop over all registered calculators and
@@ -152,7 +152,7 @@ void LjmetFactory::RunAllProducers(edm::EventBase const & event,
 
 
 
-void LjmetFactory::RunAllCalculators(edm::EventBase const & event, BaseEventSelector * selector,
+void LjmetFactory::RunAllCalculators(edm::Event const & event, BaseEventSelector * selector,
 				     LjmetEventContent & ec){
   //
   // Loop over all registered calculators and compute
@@ -215,7 +215,7 @@ void LjmetFactory::EndJobAllCalc(){
 
 
 
-void LjmetFactory::RunEndEvent(edm::EventBase const & event, 
+void LjmetFactory::RunEndEvent(edm::Event const & event, 
 			       LjmetEventContent & ec){
   
   theSelector->EndEvent(event, ec);
@@ -225,7 +225,7 @@ void LjmetFactory::RunEndEvent(edm::EventBase const & event,
 
 
 
-void LjmetFactory::RunBeginEvent(edm::EventBase const & event, 
+void LjmetFactory::RunBeginEvent(edm::Event const & event, 
 				 LjmetEventContent & ec){
   
   theSelector->BeginEvent(event, ec);

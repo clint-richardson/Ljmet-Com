@@ -56,7 +56,7 @@ public:
         return 0;
     }
     
-    virtual int AnalyzeEvent(edm::EventBase const & event, BaseEventSelector * selector);
+    virtual int AnalyzeEvent(edm::Event const & event, BaseEventSelector * selector);
     virtual int EndJob(){return 0;}
     
     
@@ -80,7 +80,7 @@ private:
 WprimeCalc::WprimeCalc(){
 }
 
-int WprimeCalc::AnalyzeEvent(edm::EventBase const & event,
+int WprimeCalc::AnalyzeEvent(edm::Event const & event,
                              BaseEventSelector * selector){
     //
     // compute event variables here
