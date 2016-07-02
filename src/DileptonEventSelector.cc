@@ -279,21 +279,32 @@ void DileptonEventSelector::BeginJob( std::map<std::string, edm::ParameterSet co
 
 
 bool DileptonEventSelector::operator()( edm::EventBase const & event, pat::strbitset & ret){
+
+  //load stuff for miniIso here
+  //packed pf candidates and rho source needed miniIso
+  edm::Handle<pat::PackedCandidateCollection> packedPFCands;
+  edm::InputTag packedPFCandsLabel_("packedPFCandidates");
+  event.getByLabel(packedPFCandsLabel_, packedPFCands);
+  //rho isolation from susy recommendation
+  edm::Handle<double> rhoJetsNC;
+  event.getByLabel(edm::InputTag("fixedGridRhoFastjetCentralNeutral","") , rhoJetsNC);
+  double myRhoJetsNC = *rhoJetsNC;
+  
     
-    pat::strbitset retJet       = jetSel_->getBitTemplate();
+  pat::strbitset retJet       = jetSel_->getBitTemplate();
+  
+  while(1){ // standard infinite while loop trick to avoid nested ifs
+        
+    passCut(ret, "No selection");
     
-    while(1){ // standard infinite while loop trick to avoid nested ifs
-        
-        passCut(ret, "No selection");
-        
-        //
-        //_____ Trigger cuts __________________________________
-        //
-        if ( considerCut("Trigger") ) {
-            
-            
-            event.getByLabel( mtPar["trigger_collection"], mhEdmTriggerResults );
-            //const edm::ParameterSetID ps = mhEdmTriggerResults->parameterSetID();
+    //
+    //_____ Trigger cuts __________________________________
+    //
+    if ( considerCut("Trigger") ) {
+      
+      
+      event.getByLabel( mtPar["trigger_collection"], mhEdmTriggerResults );
+      //const edm::ParameterSetID ps = mhEdmTriggerResults->parameterSetID();
             const edm::TriggerNames trigNames = event.triggerNames(*mhEdmTriggerResults);
             
             unsigned int _tSize = mhEdmTriggerResults->size();
@@ -562,14 +573,6 @@ bool DileptonEventSelector::operator()( edm::EventBase const & event, pat::strbi
           
 	  mvSelElectrons.clear();
 
-	  //packed pf candidates and rho source needed miniIso
-	  edm::Handle<pat::PackedCandidateCollection> packedPFCands;
-	  edm::InputTag packedPFCandsLabel_("packedPFCandidates");
-	  event.getByLabel(packedPFCandsLabel_, packedPFCands);
-	  //rho isolation from susy recommendation
-	  edm::Handle<double> rhoJetsNC;
-	  event.getByLabel(edm::InputTag("fixedGridRhoFastjetCentralNeutral","") , rhoJetsNC);
-	  double myRhoJetsNC = *rhoJetsNC;
 
           
 	  for ( std::vector<pat::Electron>::const_iterator _iel = mhElectrons->begin(); _iel != mhElectrons->end(); _iel++){
@@ -588,7 +591,7 @@ bool DileptonEventSelector::operator()( edm::EventBase const & event, pat::strbi
 	      
 
 	      if(_iel->pt() < 10) passLoose=false;
-	      else if(miniIso < 0.4) passLoose=false;
+	      else if(miniIso > 0.4) passLoose=false;
 	      else{
 		if(fabs(_iel->ecalDrivenMomentum().eta()) <0.8){
 		  if(mvaVal>0.913286) passLoose = true;
@@ -753,8 +756,13 @@ bool DileptonEventSelector::operator()( edm::EventBase const & event, pat::strbi
 		double gIso   = pfIsolationR04.sumPhotonEt;
 		double puIso  = pfIsolationR04.sumPUPt;
 		double relIso = (chIso + std::max(0.,nhIso + gIso - 0.5*puIso)) / mvSelMuons[ilep]->pt();
-		if(relIso > 0.4) looseMuon=false;
-		if(!(mvSelMuons[ilep]->isPFMuon())) looseMuon=false;
+
+		//get miniIso
+		pat::Muon* muptr = new pat::Muon(mvSelMuons[ilep]);
+		float miniIso = getPFMiniIsolation_EffectiveArea(packedPFCands, dynamic_cast<const reco::Candidate* > (muptr), 0.05, 0.2, 10., false, false,myRhoJetsNC);
+
+		if(miniIso > 0.4) looseMuon=false;
+		else if(!(mvSelMuons[ilep]->isPFMuon())) looseMuon=false;
 		else if(!( mvSelMuons[ilep]->isGlobalMuon() || mvSelMuons[ilep]->isTrackerMuon())) looseMuon=false;
 		else looseMuon=true;
 		if(!looseMuon) continue;
