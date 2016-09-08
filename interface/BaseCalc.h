@@ -47,6 +47,7 @@ public:
     void SetHistValue(std::string name, double value);
     void SetValue(std::string name, bool value);
     void SetValue(std::string name, int value);
+    void SetValue(std::string name, long long value);
     void SetValue(std::string name, double value);
     void SetValue(std::string name, std::vector<bool> value);
     void SetValue(std::string name, std::vector<int> value);

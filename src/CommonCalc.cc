@@ -95,7 +95,7 @@ int CommonCalc::AnalyzeEvent(edm::EventBase const & event,
   //
   int iRun   = event.id().run();
   int iLumi  = (unsigned int)event.id().luminosityBlock();
-  int iEvent = (Int_t)event.id().event();
+  long long iEvent = (Long64_t)event.id().event();
   SetValue("event", iEvent);
   SetValue("lumi",  iLumi);
   SetValue("run",   iRun);

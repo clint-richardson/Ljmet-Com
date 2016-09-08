@@ -61,6 +61,7 @@ public:
     
     void SetValue(std::string key, bool value);
     void SetValue(std::string key, int value);
+    void SetValue(std::string key, long long value);
     void SetValue(std::string key, double value);
     void SetValue(std::string key, std::vector<bool> value);
     void SetValue(std::string key, std::vector<int> value);
@@ -85,6 +86,7 @@ private:
     
     std::map<std::string,bool> mBoolBranch;
     std::map<std::string,int> mIntBranch;
+    std::map<std::string,long long> mLongIntBranch;
     std::map<std::string,double> mDoubleBranch;
     std::map<std::string,std::vector<bool> > mVectorBoolBranch;
     std::map<std::string,std::vector<int> > mVectorIntBranch;

@@ -29,6 +29,12 @@ void BaseCalc::SetValue(std::string name, int value)
     mpEc->SetValue(_name, value);
 }
 
+void BaseCalc::SetValue(std::string name, long long value)
+{
+  std::string _name = name + "_" + mName;
+  mpEc->SetValue(_name, value);
+}
+ 
 void BaseCalc::SetValue(std::string name, double value)
 {
     std::string _name = name + "_" + mName;
